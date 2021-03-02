@@ -1,0 +1,4 @@
+[submodule "kogito-tooling"]
+	path = kogito-tooling
+	url = https://github.com/kelvah/kogito-tooling
+	branch = BAAAS-POC
