@@ -36,9 +36,7 @@ you have to pull the latest changes from the tracked `origin`. So to update to s
 would be:
 
 ```shell
-cd kogito-tooling
-git pull origin
-cd ..
+git submodule update --remote --merge 
 ./build-modeller.sh
 ```
 
