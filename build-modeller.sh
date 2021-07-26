@@ -4,7 +4,7 @@ set -e
 YARN_VERSION="1.19.1"
 NODE_VERSION="v12.16.3"
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-REGISTRY_LOCATION=quay.io/kiegroup/baaas-decision-modeler
+REGISTRY_LOCATION=quay.io/jrota/baaas-decision-modeler
 
 function check_node() {
   NODE=$(which node)
