@@ -1,2 +1,2 @@
-FROM registry.redhat.io/rhel8/httpd-24:1-123
+FROM centos/httpd-24-centos7:2.4
 COPY kogito-tooling/packages/online-editor/dist /var/www/html/

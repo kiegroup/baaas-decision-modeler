@@ -39,7 +39,7 @@ check_node
 check_yarn
 
 cd "$SCRIPT_DIR/kogito-tooling/" && yarn run init
-cd "$SCRIPT_DIR/kogito-tooling/" && yarn run build:fast -- -- --mode production --devtool none
+cd "$SCRIPT_DIR/kogito-tooling/" && yarn build:fast -- --scope @kogito-tooling/online-editor --include-dependencies
 GIT_SHA=$(cd "$SCRIPT_DIR/kogito-tooling" && git rev-parse HEAD )
 DOCKER_IMAGE="$REGISTRY_LOCATION:$GIT_SHA"
 cd "$SCRIPT_DIR" && docker build -t "$DOCKER_IMAGE" .

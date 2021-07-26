@@ -1,0 +1,29 @@
+name: Build and push modeler container image
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.3.0
+        with:
+          node-version: 12.22.2
+
+      - name: Set yarn version
+        run: yarn set version 1.19.1 
+      
+      - name: Docker login quay.io
+        run: docker login --username ${{ secrets.QUAY_USERNAME }} --password ${{ secrets.QUAY_PASSWORD }} quay.io
+        
+      - name: Init submodule
+        run: git submodule update --init --recursive
+          
+      - name: Build and push container
+        run: ./build-modeller.sh
