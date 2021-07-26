@@ -22,11 +22,8 @@ jobs:
       - name: Docker login quay.io
         run: docker login --username ${{ secrets.QUAY_USERNAME }} --password ${{ secrets.QUAY_PASSWORD }} quay.io
         
-      - name: Docker login RH registry
-        run: docker login --username ${{ secrets.RH_USERNAME }} --password ${{ secrets.RH_PASSWORD }} registry.redhat.io
-  
       - name: Init submodule
-        run: git submodule init
+        run: git submodule update --init --recursive
           
       - name: Build and push container
         run: ./build-modeller.sh
