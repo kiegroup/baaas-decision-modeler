@@ -1,0 +1,25 @@
+name: Build modeler container image
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.3.0
+        with:
+          node-version: 12.22.2
+      
+      - name: docker login
+        run: docker login --username ${{ secrets.QUAY_USERNAME }} --password ${{ secrets.QUAY_PASSWORD }}
+        
+      - name: update modeler submodule
+        run: git submodule init && git submodule update --remote --merge 
+          
+      - name: Build and push container
+        run: ./build-modeller.sh
